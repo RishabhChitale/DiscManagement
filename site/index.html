@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operation F95</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header><h1>Operation F95</h1><p>A creator showcase &amp; compression testbed</p></header>
+  <main>
+    <section>
+      <h2>Compression Lab</h2>
+      <p>Paste text, pick an algorithm, and see how much smaller it gets.</p>
+      <textarea id="input" rows="8" placeholder="Paste some text here...">Hello hello hello hello. Repetitive text compresses very well. Repetitive text compresses very well.</textarea>
+      <div>
+        <select id="algo"><option value="gzip">gzip</option><option value="deflate">deflate</option></select>
+        <button id="run">Compress</button>
+      </div>
+      <pre id="result"></pre>
+    </section>
+  </main>
+  <script src="js/compress.js"></script>
+</body>
+</html>
