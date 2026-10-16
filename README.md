@@ -9,11 +9,11 @@ algorithms and content-hosting techniques.
 - Compare approaches (gzip, deflate, Brotli, image/video formats, minification).
 
 ## Layout
-- `site/` – the website (plain HTML/CSS/JavaScript, no install needed)
+- `docs/` – the website (plain HTML/CSS/JavaScript, no install needed)
 - `scripts/` – helper scripts (daily auto-save)
 
 ## Try it
-Open `site/index.html` in your browser. The "Compression Lab" section compresses
+Open `docs/index.html` in your browser. The "Compression Lab" section compresses
 text in the browser and shows the size savings.
 
 ## Daily save
