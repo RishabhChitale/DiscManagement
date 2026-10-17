@@ -123,3 +123,18 @@ pre{background:var(--ink);color:#d7f7ef;padding:16px;border-radius:12px;min-heig
 .chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
 #follow[aria-pressed="true"]{background:var(--ink);color:#fff}
 @media(max-width:860px){.cp-banner{height:140px}.cp-avatar{width:88px;height:88px;margin-top:-44px;font-size:2rem}}
+
+/* Home: masonry collage */
+.explore-head{padding-top:40px;padding-bottom:8px}
+.explore-head h1{font-size:clamp(1.8rem,4vw,2.6rem)}
+.masonry{columns:5 220px;column-gap:16px;padding:16px 0 72px}
+.pin{display:block;break-inside:avoid;margin-bottom:16px}
+.pin-img{position:relative;border-radius:var(--r);overflow:hidden;background:var(--alt)}
+.pin-img svg{display:block;width:100%;height:auto;transition:transform .25s}
+.pin:hover .pin-img svg,.pin:focus-visible .pin-img svg{transform:scale(1.04)}
+.lock{position:absolute;top:10px;left:10px;background:rgba(20,20,43,.8);color:#fff;font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px}
+.pin-meta{display:flex;gap:8px;align-items:center;padding:8px 2px 0}
+.pin-meta b{display:block;font-size:.9rem;line-height:1.2}
+.pin-meta div span{color:var(--muted);font-size:.78rem}
+.mini{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:.8rem;flex:none}
+@media(prefers-reduced-motion:reduce){.pin-img svg{transition:none}}

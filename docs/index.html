@@ -3,107 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>F95 – Support the creators you love</title>
-  <meta name="description" content="F95 is a place for creators to share their work and build a membership.">
+  <title>F95 – Discover creators</title>
+  <meta name="description" content="Browse art, music, games and more from creators on F95.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
-      <a class="logo" href="#top"><span class="logo-mark">F</span>95</a>
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
       <nav aria-label="Main">
-        <a href="#how">How it works</a>
-        <a href="#creators">Creators</a>
-        <a href="#pricing">Pricing</a>
+        <a href="index.html">Explore</a>
+        <a href="creator.html">Creators</a>
+        <a href="start.html#pricing">Pricing</a>
       </nav>
       <div class="nav-actions">
         <a class="link" href="#">Log in</a>
-        <a class="btn btn-primary" href="#join">Get started</a>
+        <a class="btn btn-primary" href="start.html">Get started</a>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-inner">
-        <div class="hero-text">
-          <p class="eyebrow">For creators &amp; their communities</p>
-          <h1>Make a living doing what you love.</h1>
-          <p class="lead">Share your work, build a membership, and get paid by the people who value it most. Fast pages, light downloads, nothing in the way.</p>
-          <div class="cta">
-            <a class="btn btn-primary btn-lg" href="#join">Start your page</a>
-            <a class="btn btn-ghost btn-lg" href="#creators">Explore creators</a>
-          </div>
-          <p class="fine">Free to start. No credit card needed.</p>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="card art-card c1"><div class="thumb g1"></div><b>New sketchbook drop</b><span>Members · 2h ago</span></div>
-          <div class="card art-card c2"><div class="thumb g2"></div><b>Behind the scenes</b><span>Public · yesterday</span></div>
-          <div class="card art-card c3"><div class="thumb g3"></div><b>Album demo, track 4</b><span>Members · 3d ago</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats">
-      <div class="wrap stats-inner">
-        <div><b>120k+</b><span>creators</span></div>
-        <div><b>3.4M</b><span>members</span></div>
-        <div><b>98%</b><span>lighter pages*</span></div>
-        <div><b>0.4s</b><span>average load*</span></div>
-      </div>
-      <p class="wrap fine center">*Placeholder numbers while we build.</p>
-    </section>
-
-    <section id="how" class="section">
-      <div class="wrap">
-        <h2>How it works</h2>
-        <div class="grid3">
-          <article class="card feature"><div class="icon">1</div><h3>Set up your page</h3><p>Add a banner, a bio and a few posts. It takes minutes, not days.</p></article>
-          <article class="card feature"><div class="icon">2</div><h3>Offer memberships</h3><p>Create tiers with perks, from a thank-you to exclusive behind-the-scenes content.</p></article>
-          <article class="card feature"><div class="icon">3</div><h3>Get paid, monthly</h3><p>Members support you every month, and you keep the relationship.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="creators" class="section alt">
-      <div class="wrap">
-        <h2>Creators on F95</h2>
-        <p class="sub">Sample profiles to preview the layout.</p>
-        <div class="grid3">
-          <a href="creator.html"><article class="card creator"><div class="banner g1"></div><div class="avatar a1">M</div><h3>Mira Okafor</h3><p>Illustrator &amp; comic artist</p><span class="pill">1,204 members</span></article></a>
-          <article class="card creator"><div class="banner g2"></div><div class="avatar a2">T</div><h3>The Tide Collective</h3><p>Indie folk band</p><span class="pill">860 members</span></article>
-          <article class="card creator"><div class="banner g3"></div><div class="avatar a3">J</div><h3>Jun Park</h3><p>Game dev &amp; pixel artist</p><span class="pill">2,731 members</span></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing" class="section">
-      <div class="wrap">
-        <h2>Simple pricing</h2>
-        <div class="grid3">
-          <article class="card tier"><h3>Starter</h3><p class="price">$0<small>/mo</small></p><ul><li>Creator page</li><li>Public posts</li><li>Community support</li></ul><a class="btn btn-ghost" href="#join">Choose Starter</a></article>
-          <article class="card tier featured"><span class="badge">Popular</span><h3>Creator</h3><p class="price">$9<small>/mo</small></p><ul><li>Everything in Starter</li><li>Membership tiers</li><li>Members-only posts</li></ul><a class="btn btn-primary" href="#join">Choose Creator</a></article>
-          <article class="card tier"><h3>Studio</h3><p class="price">$29<small>/mo</small></p><ul><li>Everything in Creator</li><li>Team accounts</li><li>Advanced analytics</li></ul><a class="btn btn-ghost" href="#join">Choose Studio</a></article>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="join" class="cta-band">
-      <div class="wrap center">
-        <h2>Ready to build your community?</h2>
-        <p>Join creators who are building something of their own.</p>
-        <a class="btn btn-light btn-lg" href="#">Get started free</a>
-      </div>
-    </section>
+  <main>
+    <div class="wrap explore-head">
+      <h1>Discover what creators are making.</h1>
+      <div class="filters" role="group" aria-label="Filter by category" id="cats"></div>
+    </div>
+    <div class="wrap">
+      <div class="masonry" id="masonry" aria-live="polite"></div>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="wrap foot-inner">
-      <a class="logo" href="#top"><span class="logo-mark">F</span>95</a>
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
       <p>© 2026 F95.</p>
       <nav aria-label="Footer"><a href="#">About</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Contact</a></nav>
     </div>
   </footer>
+  <script src="js/home.js"></script>
 </body>
 </html>
