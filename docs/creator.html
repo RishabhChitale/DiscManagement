@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mira Okafor on F95</title>
+  <meta name="description" content="Sample creator page: banner, tabs, post feed and membership tiers.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
+      <nav aria-label="Main">
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#creators">Creators</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#lab">Compression Lab</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="link" href="#">Log in</a>
+        <a class="btn btn-primary" href="index.html#join">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="cp-banner g1" role="img" aria-label="Profile banner"></div>
+
+    <section class="wrap cp-head">
+      <div class="cp-avatar a1" aria-hidden="true">M</div>
+      <div class="cp-id">
+        <h1>Mira Okafor</h1>
+        <p>Illustrator &amp; comic artist · <span class="pill">1,204 members</span></p>
+      </div>
+      <div class="cp-actions">
+        <a class="btn btn-primary" href="#join-tiers" data-tab="membership">Join</a>
+        <button class="btn btn-ghost" type="button" id="follow" aria-pressed="false">Follow</button>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="Creator sections">
+        <button role="tab" id="t-home" aria-controls="p-home" aria-selected="true">Home</button>
+        <button role="tab" id="t-posts" aria-controls="p-posts" aria-selected="false" tabindex="-1">Posts</button>
+        <button role="tab" id="t-membership" aria-controls="p-membership" aria-selected="false" tabindex="-1">Membership</button>
+        <button role="tab" id="t-about" aria-controls="p-about" aria-selected="false" tabindex="-1">About</button>
+      </div>
+    </div>
+
+    <div class="wrap cp-body">
+      <section id="p-home" role="tabpanel" aria-labelledby="t-home">
+        <h2>Latest posts</h2>
+        <div class="feed" id="feed-home"></div>
+      </section>
+
+      <section id="p-posts" role="tabpanel" aria-labelledby="t-posts" hidden>
+        <h2>All posts</h2>
+        <div class="filters" role="group" aria-label="Filter posts">
+          <button class="chip on" type="button" data-f="all">All</button>
+          <button class="chip" type="button" data-f="public">Public</button>
+          <button class="chip" type="button" data-f="members">Members</button>
+        </div>
+        <div class="feed" id="feed-all"></div>
+      </section>
+
+      <section id="p-membership" role="tabpanel" aria-labelledby="t-membership" hidden>
+        <h2 id="join-tiers">Become a member</h2>
+        <p class="sub">Pick a tier. Cancel any time.</p>
+        <div class="grid3">
+          <article class="card tier"><h3>Supporter</h3><p class="price">$3<small>/mo</small></p><ul><li>Members-only posts</li><li>Name in credits</li></ul><button class="btn btn-ghost" type="button">Join Supporter</button></article>
+          <article class="card tier featured"><span class="badge">Most chosen</span><h3>Inker</h3><p class="price">$8<small>/mo</small></p><ul><li>Everything in Supporter</li><li>Early chapters</li><li>Monthly sketchbook PDF</li></ul><button class="btn btn-primary" type="button">Join Inker</button></article>
+          <article class="card tier"><h3>Patron</h3><p class="price">$20<small>/mo</small></p><ul><li>Everything in Inker</li><li>Vote on the next story</li><li>Quarterly print</li></ul><button class="btn btn-ghost" type="button">Join Patron</button></article>
+        </div>
+      </section>
+
+      <section id="p-about" role="tabpanel" aria-labelledby="t-about" hidden>
+        <h2>About Mira</h2>
+        <p class="lead">Mira draws a weekly sci-fi comic about a lighthouse keeper on a drifting space station. This is a sample profile used to preview the creator page layout.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
+      <p>© 2026 F95. A compression and content-hosting testbed.</p>
+      <nav aria-label="Footer"><a href="#">About</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Contact</a></nav>
+    </div>
+  </footer>
+  <script src="js/creator.js"></script>
+</body>
+</html>
