@@ -264,3 +264,9 @@ table.eval th{background:var(--alt)}
 .theme-toggle:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 /* On wide screens the toggle sits in the far top-right corner of the page, right of "Get started". */
 @media(min-width:1240px){.nav .theme-toggle{position:absolute;right:20px;top:13px}}
+
+/* Real images (content.json) */
+.pin:hover .pin-img img,.pin:focus-visible .pin-img img{transform:scale(1.04)}
+.pin-img img{transition:transform .25s}
+.thumb.photo{background-size:cover;background-position:center;height:150px}
+@media(prefers-reduced-motion:reduce){.pin-img img{transition:none}}

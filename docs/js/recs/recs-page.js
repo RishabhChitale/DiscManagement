@@ -1,5 +1,5 @@
 // Demo page: feed, taste panel, item detail, and image upload analysis.
-import { makeCatalog } from "./catalog.js";
+import { loadItems } from "./content.js";
 import { rasterize, featuresFromCanvas, describe } from "./features.js";
 import { VERSIONS, buildIndex, recommend, similar, predictTags, profile } from "./engine.js";
 import * as store from "./store.js";
@@ -9,7 +9,7 @@ const $ = id => document.getElementById(id);
 const feedEl = $("feed"), tasteEl = $("taste"), statusEl = $("status");
 const N = 240;
 
-const items = makeCatalog(N);
+const { items, real } = await loadItems(N);
 let index = null, mode = "basic", events = store.load(), uploads = [];
 const cache = { basic: null, clip: null };
 
@@ -19,7 +19,7 @@ const setStatus = t => { statusEl.textContent = t; };
 async function basicIndex() {
   if (cache.basic) return cache.basic;
   setStatus("Analysing images…");
-  const canvases = await Promise.all(items.map(i => rasterize(i.svg)));
+  const canvases = await Promise.all(items.map(i => rasterize(i.svg || i.thumb)));
   const raw = canvases.map(featuresFromCanvas);
   cache.basic = buildIndex(items, raw);
   cache.basic.kind = "basic";
@@ -35,7 +35,7 @@ async function clipIndex() {
     vecs = [];
     for (let i = 0; i < items.length; i++) {
       setStatus("Embedding catalog with CLIP… " + (i + 1) + "/" + items.length);
-      const { canvas } = await rasterize(items[i].svg, 224);
+      const { canvas } = await rasterize(items[i].svg || items[i].thumb, 224);
       vecs.push(await clip.embedCanvas(canvas));
       if (i % 10 === 0) await new Promise(r => setTimeout(r));
     }
@@ -47,10 +47,12 @@ async function clipIndex() {
 }
 
 // ---- rendering helpers ----------------------------------------------------
-function media(it) {
-  if (it.imgUrl) {
+function media(it, full = false) {
+  const url = it.imgUrl || (full && it.img) || it.thumb;
+  if (url) {
     const img = document.createElement("img");
-    img.src = it.imgUrl; img.alt = it.title;
+    img.src = url; img.alt = it.title; img.loading = "lazy";
+    if (it.w && it.h) { img.width = it.w; img.height = it.h; }
     return img;
   }
   const d = document.createElement("div");
@@ -160,7 +162,7 @@ function openDetail(it) {
   const chips = document.createElement("div");
   chips.className = "tagchips";
   it.tags.forEach(t => { const p = document.createElement("span"); p.className = "pill"; p.textContent = t; chips.append(p); });
-  const big = document.createElement("div"); big.className = "big"; big.append(thumb(it));
+  const big = document.createElement("div"); big.className = "big"; big.append(media(it, true));
   const mh = document.createElement("h3"); mh.textContent = "More like this";
   const grid = document.createElement("div"); grid.className = "mlt";
   similar(index, it.id, 8).forEach(({ item }) => {
@@ -263,6 +265,9 @@ $("embed").addEventListener("change", async e => {
 (async () => {
   index = await basicIndex();
   setStatus("");
+  $("source").textContent = real
+    ? "Using your " + items.length + " images from content.json."
+    : "Using generated sample artwork. Add images to docs/img and run scripts/build-content.ps1 to use your own.";
   renderTaste();
   renderFeed();
   window.__recs = { get index() { return index; }, items, get events() { return events; } };

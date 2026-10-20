@@ -24,3 +24,8 @@ text in the browser and shows the size savings.
 - `docs/recs-eval.html` – offline evaluation with simulated users.
 - `docs/changelog.html` – "Recommendation-alg changelog": one markdown file per iteration in `docs/recs/changelog/`, plus the "Still to do" roadmap. Add a file there and list it in `index.json` for each new iteration.
 - Code lives in `docs/js/recs/`. The pages load files with `fetch`, so open them through a web server (GitHub Pages, or any local static server), not by double-clicking.
+
+## Adding your own images
+Drop images into `docs/img/<category>/` and run `powershell -ExecutionPolicy Bypass -File scripts\build-content.ps1`.
+It makes thumbnails in `docs/thumbs/` and writes `docs/content.json`, which the home page, creator page and
+recommender then use instead of the generated sample artwork. See `docs/img/README.md` for naming and tips.

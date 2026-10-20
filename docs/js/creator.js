@@ -17,6 +17,11 @@ function postCard(p) {
     '<div class="post-body"><h3></h3><span class="fine"></span><p></p>' +
     (locked ? '<a class="btn btn-ghost" href="#join-tiers" data-tab="membership">Unlock with membership</a>' : '') +
     "</div>";
+  if (p.img) {
+    const t = el.querySelector(".thumb");
+    t.classList.add("photo");
+    t.style.backgroundImage = (locked ? "linear-gradient(rgba(20,20,43,.55),rgba(20,20,43,.55)), " : "") + "url(\"" + p.img + "\")";
+  }
   el.querySelector("h3").textContent = p.title;
   el.querySelector(".fine").textContent = p.meta;
   el.querySelector("p").textContent = locked ? p.text.slice(0, 40) + "…" : p.text;
@@ -31,6 +36,15 @@ const homeFeed = document.getElementById("feed-home");
 const allFeed = document.getElementById("feed-all");
 render(POSTS.slice(0, 3), homeFeed);
 render(POSTS, allFeed);
+
+// If content.json exists (built from docs/img), use this creator's real images as post thumbnails.
+fetch("content.json").then(r => (r.ok ? r.json() : null)).catch(() => null).then(c => {
+  const mine = c && c.items.filter(i => i.creator === "Mira Okafor");
+  if (!mine || !mine.length) return;
+  POSTS.forEach((p, i) => { p.img = mine[i % mine.length].thumb; });
+  render(POSTS.slice(0, 3), homeFeed);
+  render(POSTS, allFeed);
+});
 
 // Tabs
 const tabs = [...document.querySelectorAll('[role="tab"]')];

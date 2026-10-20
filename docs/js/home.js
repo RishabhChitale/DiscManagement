@@ -1,5 +1,5 @@
 // Home page: masonry collage of sample posts with original generated artwork.
-const CATS = ["All", "Art", "Music", "Games", "Writing"];
+let CATS = ["All", "Art", "Music", "Games", "Writing"];
 const CREATORS = [
   { name: "Mira Okafor", init: "M", color: "#5b4bff", cat: "Art" },
   { name: "The Tide Collective", init: "T", color: "#ff8a5b", cat: "Music" },
@@ -38,7 +38,7 @@ function art(seed, w, h) {
   return s + "</svg>";
 }
 
-const POSTS = [];
+let POSTS = [];
 for (let i = 0; i < 40; i++) {
   const r = rng(i * 97 + 13), c = CREATORS[i % CREATORS.length];
   const w = 400, h = Math.round(w * (0.7 + r() * 0.9));
@@ -58,23 +58,51 @@ function render(cat) {
     a.href = "creator.html";
     a.innerHTML = '<div class="pin-img">' + art(p.id + 1, p.w, p.h) + (p.members ? '<span class="lock">Members</span>' : "") + "</div>" +
       '<div class="pin-meta"><span class="mini" style="background:' + p.creator.color + '">' + p.creator.init + '</span><div><b></b><span></span></div></div>';
-    a.querySelector("svg").style.aspectRatio = p.w + " / " + p.h;
+    if (p.thumb) swapArt(a, p);
+    else a.querySelector("svg").style.aspectRatio = p.w + " / " + p.h;
     a.querySelector("b").textContent = p.title;
     a.querySelector(".pin-meta span:not(.mini)").textContent = p.creator.name;
     return a;
   }));
 }
 
-const cats = document.getElementById("cats");
-CATS.forEach((c, i) => {
-  const b = document.createElement("button");
-  b.type = "button";
-  b.className = "chip" + (i ? "" : " on");
-  b.textContent = c;
-  b.addEventListener("click", () => {
-    cats.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x === b));
-    render(c);
+// Pins use the generated artwork unless content.json (built from docs/img) has real images.
+function swapArt(a, p) {
+  const box = a.querySelector(".pin-img"), svg = box.querySelector("svg");
+  const img = document.createElement("img");
+  img.src = p.thumb; img.alt = p.title; img.loading = "lazy"; img.width = p.w; img.height = p.h;
+  svg.replaceWith(img);
+}
+
+function usePostsFromContent(c) {
+  const seed = s => { let h = 2166136261; for (const ch of s) h = Math.imul(h ^ ch.charCodeAt(0), 16777619); return h >>> 0; };
+  CATS = ["All", ...new Set(c.items.map(i => i.cat))];
+  POSTS = c.items.map((i, n) => {
+    const who = c.creators[i.creator] || { init: "?", color: "#5b4bff" };
+    return {
+      id: n, w: i.w, h: i.h, title: i.title, thumb: i.thumb, members: seed(i.id) % 100 < 35,
+      creator: { name: i.creator, init: who.init, color: who.color, cat: i.cat }
+    };
   });
-  cats.append(b);
+}
+
+const cats = document.getElementById("cats");
+function buildChips() {
+  CATS.forEach((c, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "chip" + (i ? "" : " on");
+    b.textContent = c;
+    b.addEventListener("click", () => {
+      cats.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x === b));
+      render(c);
+    });
+    cats.append(b);
+  });
+}
+
+fetch("content.json").then(r => (r.ok ? r.json() : null)).catch(() => null).then(c => {
+  if (c && c.items && c.items.length) usePostsFromContent(c);
+  buildChips();
+  render("All");
 });
-render("All");

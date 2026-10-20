@@ -48,6 +48,7 @@ const ITEMS = [
   { lane: "Image understanding", title: "Basic colour and layout features", status: "done" },
   { lane: "Image understanding", title: "CLIP embeddings in the browser", status: "done" },
   { lane: "Image understanding", title: "Zero-shot labels for uploads", status: "done" },
+  { lane: "Image understanding", title: "Real image catalog (docs/img + build script)", status: "done" },
   { lane: "Image understanding", title: "CLIP labels as upload tags", status: "next", effort: 1, impact: 3, note: "Replace the odd nearest-neighbour tags with CLIP's labels." },
   { lane: "Image understanding", title: "Captions from a vision-language model", status: "later", effort: 3, impact: 3, note: "Rich tags and descriptions at upload time." },
   { lane: "Image understanding", title: "Near-duplicate detection", status: "later", effort: 2, impact: 2, note: "Stop reposts flooding a feed (perceptual hashing)." },

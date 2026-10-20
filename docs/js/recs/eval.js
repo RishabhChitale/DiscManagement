@@ -12,6 +12,18 @@ export const PERSONAS = [
   { name: "Pixel look (any category)", groups: [it => it.style === "pixels"] }
 ];
 
+
+// Real catalogs have no hidden "style", so build personas from the categories present.
+export function personasFor(index) {
+  const counts = new Map();
+  index.items.forEach(i => counts.set(i.cat, (counts.get(i.cat) || 0) + 1));
+  const cats = [...counts].filter(([, n]) => n >= 10).sort((a, b) => b[1] - a[1]).map(([c]) => c);
+  const group = c => it => it.cat === c;
+  const out = cats.slice(0, 2).map(c => ({ name: c + " only", groups: [group(c)] }));
+  if (cats.length >= 2) out.push({ name: cats[0] + " + " + cats[1], groups: [group(cats[0]), group(cats[1])] });
+  if (cats.length >= 3) out.push({ name: cats.slice(0, 3).join(" + "), groups: cats.slice(0, 3).map(group) });
+  return out;
+}
 const ROUNDS = 5, LIMIT = 10;
 
 function simulate(index, cfg, persona, seed) {
@@ -43,7 +55,8 @@ function simulate(index, cfg, persona, seed) {
 // versions: { name: cfg }. Returns one row per persona with averaged metrics.
 export function runEval(index, versions, users = 30) {
   const rows = [];
-  for (const persona of PERSONAS) {
+  const personas = index.items.some(i => i.style) ? PERSONAS : personasFor(index);
+  for (const persona of personas) {
     const row = { persona: persona.name, results: {} };
     for (const [name, cfg] of Object.entries(versions)) {
       let p = 0, c = 0, d = 0, a = 0;
