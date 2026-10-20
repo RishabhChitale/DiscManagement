@@ -53,7 +53,7 @@ $encParams = New-Object System.Drawing.Imaging.EncoderParameters 1
 $encParams.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter ([System.Drawing.Imaging.Encoder]::Quality), ([long]$ThumbQuality)
 
 $exts = @(".jpg", ".jpeg", ".png", ".gif", ".bmp")
-$files = Get-ChildItem -Path $imgDir -Recurse -File | Where-Object { $_.Name -notlike "README*" } | Sort-Object FullName
+$files = Get-ChildItem -Path $imgDir -Recurse -File | Where-Object { $_.Extension -ne ".md" } | Sort-Object FullName
 $items = @(); $creators = @{}; $skipped = 0; $made = 0
 $totalOrig = 0; $totalThumb = 0
 
