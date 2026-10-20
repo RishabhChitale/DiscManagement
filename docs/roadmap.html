@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F95 – Recommendation roadmap</title>
+  <meta name="description" content="Where the F95 recommendation algorithm is, how it has improved, and what to build next.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
+      <nav aria-label="Main">
+        <a href="index.html">Explore</a>
+        <a href="recs.html">For you</a>
+        <a href="creator.html">Creators</a>
+        <a href="changelog.html">Rec-alg changelog</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="start.html#pricing">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="link" href="#">Log in</a>
+        <a class="btn btn-primary" href="start.html">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap rm">
+    <div class="rm-head">
+      <p class="eyebrow">Recommendation algorithm</p>
+      <h1>Roadmap</h1>
+      <p class="lead">What has been built, whether it is working, and what is worth building next. Details of each finished iteration are in the <a href="changelog.html" style="color:var(--brand)">changelog</a>.</p>
+      <div class="rm-progress" id="progress"></div>
+    </div>
+
+    <section class="rm-sec" aria-labelledby="h-timeline">
+      <h2 id="h-timeline">Milestones</h2>
+      <ol class="rm-timeline" id="timeline"></ol>
+    </section>
+
+    <section class="rm-sec" aria-labelledby="h-chart">
+      <h2 id="h-chart">Is it getting better?</h2>
+      <p class="sub">Simulated users, 240-item catalog, higher is better. Switching to CLIP (an image-understanding model) moved the numbers far more than any ranking tweak.</p>
+      <div class="viz-root card rm-card">
+        <div class="viz-legend" id="legend"></div>
+        <div class="viz-wrap"><svg id="chart" role="img" aria-labelledby="chart-t chart-d" viewBox="0 0 760 340"></svg></div>
+        <details class="viz-table">
+          <summary>View as table</summary>
+          <div class="tbl" id="chart-table"></div>
+        </details>
+        <p class="fine">Simulated users are far simpler than real ones, so treat this as a regression check, not proof of real-world quality.</p>
+      </div>
+    </section>
+
+    <section class="rm-sec" aria-labelledby="h-matrix">
+      <h2 id="h-matrix">What to build next</h2>
+      <p class="sub">Each upcoming item placed by estimated effort and impact. Top-left is the best value. These are my estimates, not measurements. Blue dots are next up, grey dots are later. Hover or tab to a dot for details.</p>
+      <div class="rm-matrix-grid">
+        <div class="viz-root card rm-card"><svg id="matrix" role="img" aria-labelledby="matrix-t" viewBox="0 0 760 440"></svg></div>
+        <ol class="rm-key" id="matrix-key"></ol>
+      </div>
+    </section>
+
+    <section class="rm-sec" aria-labelledby="h-lanes">
+      <h2 id="h-lanes">Everything, by theme</h2>
+      <div class="rm-status-key" aria-label="Status key"></div>
+      <div class="rm-lanes" id="lanes"></div>
+    </section>
+  </main>
+
+  <div class="viz-tip" id="tip" role="tooltip" hidden></div>
+
+  <footer class="footer">
+    <div class="wrap foot-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
+      <p>© 2026 F95.</p>
+      <nav aria-label="Footer"><a href="recs.html">For you</a><a href="changelog.html">Changelog</a><a href="recs-eval.html">Evaluation</a></nav>
+    </div>
+  </footer>
+  <script src="js/roadmap-page.js"></script>
+</body>
+</html>

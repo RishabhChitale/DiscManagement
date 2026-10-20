@@ -1,5 +1,7 @@
 # Still to do
 
+> See the visual [Roadmap](roadmap.html) page for a graphical view of this list.
+
 Ideas for making the recommendation algorithm better, roughly in the order they are worth doing. Updated at every iteration.
 
 ## Next iteration candidates
