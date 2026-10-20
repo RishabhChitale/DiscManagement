@@ -8,7 +8,7 @@ function inline(s) {
   return esc(s)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
-    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|[\w./#-]+)[^)\s]*)\)/g, '<a href="$2" style="color:var(--brand)">$1</a>');
+    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|[\w./#-]+)[^)\s]*)\)/g, '<a href="$2" style="color:var(--brand-text)">$1</a>');
 }
 
 // Tiny markdown subset: headings, bullet/numbered lists, tables, paragraphs.

@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="darkreader-lock">
   <title>F95 – Recommendation-alg changelog</title>
   <meta name="description" content="Every iteration of the F95 recommendation algorithm, what changed, how it measured, and what is still to do.">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/theme.js"></script>
 </head>
 <body>
   <header class="nav">
@@ -20,6 +22,7 @@
         <a href="start.html#pricing">Pricing</a>
       </nav>
       <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Dark theme"></button>
         <a class="link" href="#">Log in</a>
         <a class="btn btn-primary" href="start.html">Get started</a>
       </div>
@@ -28,7 +31,7 @@
 
   <main class="wrap narrow cl">
     <h1>Recommendation-alg changelog</h1>
-    <p class="sub">One entry per iteration of the <a href="recs.html" style="color:var(--brand)">For you</a> prototype: what changed, how it measured, and what is still to do.</p>
+    <p class="sub">One entry per iteration of the <a href="recs.html" style="color:var(--brand-text)">For you</a> prototype: what changed, how it measured, and what is still to do.</p>
     <div class="tabs" role="tablist" aria-label="Changelog sections" id="tabs"></div>
     <div id="doc" class="md" role="tabpanel" aria-live="polite"></div>
   </main>
