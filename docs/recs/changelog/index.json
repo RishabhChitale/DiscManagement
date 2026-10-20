@@ -1,0 +1,8 @@
+[
+  { "file": "v0.4-clip.md", "tab": "v0.4 CLIP" },
+  { "file": "v0.3-blend.md", "tab": "v0.3 Blend" },
+  { "file": "v0.2-multi-interest.md", "tab": "v0.2 Multi-interest" },
+  { "file": "v0.1-baseline.md", "tab": "v0.1 Baseline" },
+  { "file": "roadmap.md", "tab": "Still to do" },
+  { "file": "how-it-works.md", "tab": "How it works" }
+]

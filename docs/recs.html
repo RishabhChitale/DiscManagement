@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F95 – For you (prototype)</title>
+  <meta name="description" content="A prototype recommendation feed that learns your taste from the images you save.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
+      <nav aria-label="Main">
+        <a href="index.html">Explore</a>
+        <a href="recs.html">For you</a>
+        <a href="creator.html">Creators</a>
+        <a href="changelog.html">Rec-alg changelog</a>
+        <a href="start.html#pricing">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="link" href="#">Log in</a>
+        <a class="btn btn-primary" href="start.html">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap rec">
+    <div class="rec-head">
+      <h1>For you <span class="pill">prototype</span></h1>
+      <p class="sub">Save a few pins and the feed learns your taste. Everything runs in your browser; nothing is uploaded or sent anywhere.</p>
+    </div>
+
+    <section class="rec-panel card" aria-label="Controls">
+      <label>Algorithm
+        <select id="algo"></select>
+      </label>
+      <label>Image understanding
+        <select id="embed">
+          <option value="basic">Basic (colour &amp; layout, instant)</option>
+          <option value="clip">CLIP model (downloads ~90 MB)</option>
+        </select>
+      </label>
+      <button class="btn btn-ghost" id="reset" type="button">Reset my taste</button>
+      <span class="fine" id="status" role="status"></span>
+    </section>
+
+    <div class="rec-cols">
+      <aside class="rec-side">
+        <section class="card rec-box" aria-labelledby="taste-h">
+          <h2 id="taste-h">Your taste</h2>
+          <div id="taste"><p class="fine">Nothing yet. Save a few pins you like.</p></div>
+        </section>
+        <section class="card rec-box" aria-labelledby="up-h">
+          <h2 id="up-h">Try an upload</h2>
+          <p class="fine">Pick any image. The system looks at the pixels only (no title, no tags) and works out what it is and who might like it. The file stays on your device.</p>
+          <input type="file" id="file" accept="image/*">
+          <div id="analysis" aria-live="polite"></div>
+        </section>
+      </aside>
+      <section aria-label="Your feed">
+        <div class="row"><button class="btn btn-primary" id="refresh" type="button" hidden>Refresh feed with what I just did</button></div>
+        <div class="masonry rec-feed" id="feed"></div>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="detail" class="rec-dialog" aria-label="Pin details">
+    <button class="btn btn-ghost" id="close" type="button">Close</button>
+    <div id="detail-body"></div>
+  </dialog>
+
+  <footer class="footer">
+    <div class="wrap foot-inner">
+      <a class="logo" href="index.html"><span class="logo-mark">F</span>95</a>
+      <p>© 2026 F95.</p>
+      <nav aria-label="Footer"><a href="changelog.html">Rec-alg changelog</a><a href="recs-eval.html">Evaluation</a><a href="#">Privacy</a></nav>
+    </div>
+  </footer>
+  <script type="module" src="js/recs/recs-page.js"></script>
+</body>
+</html>
